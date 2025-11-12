@@ -1,0 +1,77 @@
+<div class="container mx-auto px-4 py-8">
+  <%= link_to "<- Back to Products", products_path, class: "text-blue-600 hover:underline mb-4 inline-block" %>
+
+  <div class="bg-white rounded-lg shadow-lg p-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Left Column -->
+      <div class="bg-gray-200 rounded-lg flex items-center justify-center h-96">
+        <span class="text-gray-500">Product Image Placeholder</span>
+      </div>
+
+      <!-- Right Column -->
+      <div>
+        <h1 class="text-3xl font-bold mb-4"><%= @product.name %></h1>
+
+        <div class="text-4xl font-bold text-green-600 mb-6">
+          €<%= number_to_currency(@product.price, unit: "") %>
+        </div>
+
+        <p class="text-gray-700 mb-6"><%= @product.description %></p>
+
+        <div class="border-t border-b py-4 mb-6 space-y-3">
+          <div class="flex justify-between">
+            <span class="font-semibold">Players:</span>
+            <span class><%= @product.player_count %></span>
+          </div>
+
+          <div class="flex justify-between">
+            <span class="font-semibold">Age:</span>
+            <span><%= @product.min_age %>+</span>
+          </div>
+          <% if @product.complexity.present? %>
+            <div class="flex justify-between">
+              <span class="font-semibold">Complexity:</span>
+              <span><%= @product.complexity %> / 5</span>
+            </div>
+          <% end %>
+
+          <% if @product.designer.present? %>
+            <div class="flex justify-between">
+              <span class="font-semibold">Designer:</span>
+              <span><%= @product.designer %></span>
+            </div>
+          <% end %>
+
+          <% if @product.publisher.present? %>
+            <div class="flex justify-between">
+              <span class="font-semibold">Publisher:</span>
+              <span><%= @product.publisher %></span>
+            </div>
+          <% end %>
+
+          <% if @product.year_published.present? %>
+            <div class="flex justify-between">
+              <span class="font-semibold">Year:</span>
+              <span><%= @product.year_published %></span>
+            </div>
+          <% end %>
+        </div>
+
+        <% if @product.in_stock? %>
+          <div class="mb-4">
+            <span class="text-green-600 font-semibold">✓ In Stock</span>
+            <span class="text-gray-600">(<%= @product.stock_quantity %> available)</span>
+          </div>
+          <button class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition font-semibold">
+            Add to Cart
+          </button>
+        <% else %>
+          <div class="text-red-600 font font-semibold mb-4">Out of Stock</div>
+          <button disabled class="w-full bg-gray-400 text-white py-3 px-6 rounded-lg cursor-not-allowed">
+            Unavailable
+          </button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

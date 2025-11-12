@@ -1,0 +1,43 @@
+<div class="container mx-auto px-4 py-8">
+  <h1 class="text-4xl font-bold mb-8">The Game Table</h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <% @products.each do |product| %>
+      <div class="border rounded-lg p-6 hover:shadow-lg transition">
+        <h2 class="text-xl font-semibold mb-2">
+          <%= link_to product.name, product_path(product), class: "hover:text-blue-600" %>
+        </h2>
+
+        <p class="text-gray-600 mb-4 line-clamp-3">
+          <%= product.description %>
+        </p>
+
+        <div class="space-y-2 text-sm text-gray-700">
+          <div><strong>Players:</strong> <%= product.player_count %></div>
+          <div><strong>Play Time:</strong> <%= product.min_play_time %>-<%= product.max_play_time %> min</div>
+          <div><strong>Age:</strong> <%= product.min_age %>+</div>
+          <% if product.publisher.present? %>
+            <div><strong>Publisher:</strong> <%= product.publisher %></div>
+          <% end %>
+        </div>
+
+        <div class="mt-4 flex items-center justify-between">
+          <span class="text-2xl font-bold text-green-600">
+            €<%= number_to_currency(product.price, unit: "") %>
+          </span>
+
+          <% if product.in_stock? %>
+            <span class="text-green-600 text-sm">In Stock</span>
+          <% else %>
+            <span cass="text-red-600 text-sm">Out of Stock</span>
+          <% end %>
+        </div>
+
+        <div class="mt-4">
+          <%= link_to "View Details", product_path(product),
+            class: "block text-center bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

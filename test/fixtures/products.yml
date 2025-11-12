@@ -1,0 +1,33 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  price: 9.99
+  sku: MyString
+  stock_quantity: 1
+  active: false
+  min_players: 1
+  max_players: 1
+  min_play_time: 1
+  min_age: 1
+  complexity: 9.99
+  publisher: MyString
+  designer: MyString
+  year_published: MyString
+
+two:
+  name: MyString
+  description: MyText
+  price: 9.99
+  sku: MyString
+  stock_quantity: 1
+  active: false
+  min_players: 1
+  max_players: 1
+  min_play_time: 1
+  min_age: 1
+  complexity: 9.99
+  publisher: MyString
+  designer: MyString
+  year_published: MyString
